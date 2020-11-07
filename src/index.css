@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #e4e4e4;
 }
 
 code {
@@ -9,9 +10,66 @@ code {
     monospace;
 }
 
-.minesweeper{
+.Minesweeper{
+  width: 500px;
+  height: 600px;
+  border: 1px solid black;
+
+}
+
+.title{
+  text-align: center;
+  margin: 0;
+}
+
+.board-head{
+  height: 60px;
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset,
+.flag-count,
+.timer{
+  width: 55px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset{
+  font-size: 20px;
+}
+
+.board{
   width: 500px;
   height: 500px;
   border: 1px solid black;
+  border-bottom: none;
+}
 
+.board .row{
+  display: flex;
+  height: 50px;
+}
+
+.board .row:last-child{
+  border-bottom: none;
+
+}
+
+.board .row .cell {
+  border: 1px solid black;
+}
+
+.board .row .cell .open{
+  border: none;
+}
+
+.board .row .cell:last-child{
+  border-right: none;
 }

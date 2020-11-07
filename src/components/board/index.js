@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Row from "../row";
 
 class Board extends Component {
     
@@ -27,16 +28,38 @@ class Board extends Component {
                 });
             }
         }
+            //after board is created, we add the mines.
 
-        console.log(board);
+            for(let i=0; i<props.mines; i++){
+                let randomRow = Math.floor(Math.random() * props.rows);
+                let randomCol = Math.floor(Math.random() * props.columns);
+
+                let cell = board[randomRow][randomCol];
+
+                if (cell.hasMine){
+                    i--;
+
+                } else {
+                    cell.hasMine = true;
+                }            
+        }
+        
+        return board
+        //console.log(board);
     }
     render() { 
-        return ( 
-            <div>
-                
-            </div>
-         );
+        let rows = this.state.rows.map((row, index) => {
+            return (
+                <Row 
+                    cells={row}
+                    key={index}
+                />
+
+            )
+        })
+    return <div className="board">{rows}</div>; 
+           
     }
 }
  
-export default board;
+export default Board;
