@@ -28,6 +28,7 @@ class Board extends Component {
                 });
             }
         }
+        
             //after board is created, we add the mines.
 
             for(let i=0; i<props.mines; i++){
@@ -45,8 +46,31 @@ class Board extends Component {
         }
         
         return board
-        //console.log(board);
-    }
+        // console.log(board);
+    };
+
+    open = cell =>{
+        let rows = this.state.rows;
+
+        let current = rows[cell.y][cell.x];
+
+        if(current.hasMine && this.props.openCells === 0) {
+            console.log("cell already has mine, restart!");
+            let newRows = this.createBoard(this.props);
+            this.setState({
+                rows: newRows
+            }, () => {
+                this.open(cell);
+            })
+        } else {
+            if(!cell.hasFlag && !current.isOpen){
+                this.props.openCellclick();
+
+                current.isOpen = true;
+            } //youtube.com/watch?v=tfz1TssUfzM  1:41:21
+        }
+    };
+
     render() { 
         let rows = this.state.rows.map((row, index) => {
             return (

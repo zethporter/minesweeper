@@ -46,6 +46,7 @@ code {
 
 .reset{
   font-size: 20px;
+  width: 80px;
 }
 
 .board{
@@ -68,6 +69,10 @@ code {
 .board .row .cell {
   border: 1px solid black;
   width: 100%;
+}
+
+.board .row .cell:hover{
+  background-color: aquamarine;
 }
 
 .board .row .cell .open{
