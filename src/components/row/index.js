@@ -4,7 +4,7 @@ import Cell from '../cells';
 const Row = props => {
     let cells = props.cells.map((data, index) => {
         return(
-        <Cell key={index} data={data} />
+        <Cell key={index} data={data} open={props.open}/>
         )
     })
     return(
