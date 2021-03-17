@@ -1,16 +1,15 @@
-import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+
+import { render } from 'react-dom';
 import './index.css';
 import Minesweeper from './Minesweeper';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-    <StrictMode>
-    <Minesweeper />
-    </StrictMode>
+
+render(    
+    <Minesweeper />,
+    document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

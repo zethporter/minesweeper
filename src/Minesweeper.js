@@ -4,14 +4,18 @@ import Board from './components/board';
 import BoardHead from './components/boardHead';
 
 class Minesweeper extends Component {
-state = {
-  status: "waiting", //waiting, running, ended
-  rows: 10,
-  columns: 10,
-  flags: 10,
-  mines: 10,
-  time: 0,
-  openCells: 0
+  constructor(){
+    super();
+    this.intervals = [];
+}
+  state = {
+    status: "waiting", //waiting, running, ended
+    rows: 10,
+    columns: 10,
+    flags: 10,
+    mines: 10,
+    time: 0,
+    openCells: 0
 };
 
 tick = () => {
@@ -19,21 +23,25 @@ tick = () => {
     let time = this.state.time + 1;
     this.setState({ time })
   }
-}
+};
 
 setInterval = (fn, t) => {
   this.intervals.push(setInterval(fn, t));
-}
+};
 
 handleCellClick = () => {
   if (this.state.openCells === 0 && this.state.status !== "running"){
-    this.state({
+    this.setState({
       status: "running"
     }, () => {
       this.setInterval(this.tick, 1000)
     })
   }
-}
+
+  this.setState(prevState => {
+    return { openCells: prevState.openCells + 1 };
+  })
+};
 
 
 render(){
@@ -49,10 +57,11 @@ render(){
       columns={this.state.columns} 
       mines={this.state.mines} 
       openCells={this.state.openCells}
+      onCellClick={this.handleCellClick}
       />
     </div>
   );
-}
+};
 }
 
 

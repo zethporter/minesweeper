@@ -66,18 +66,25 @@ code {
 
 }
 
+.open{
+  border: none;
+  background-color: plum;
+}
+
+.open:hover{
+  background-color: plum;
+}
+
 .board .row .cell {
   border: 1px solid black;
   width: 100%;
 }
 
-.board .row .cell:hover{
+.cell:hover{
   background-color: aquamarine;
 }
 
-.board .row .cell .open{
-  border: none;
-}
+
 
 .board .row .cell:last-child{
   border-right: none;
